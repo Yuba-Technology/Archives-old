@@ -1,0 +1,37 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: friday
+      time: "12:00"
+      timezone: Asia/Shanghai
+  - package-ecosystem: npm
+    directory: "/web/"
+    reviewers:
+      - "@yuba-technology/frontend-team"
+    labels:
+      - dependencies
+      - frontend
+    schedule:
+      interval: weekly
+      day: friday
+      time: "12:00"
+      timezone: Asia/Shanghai
+    versioning-strategy: increase
+    rebase-strategy: disabled
+  - package-ecosystem: npm
+    directory: "/server/"
+    reviewers:
+      - "@yuba-technology/backend-team"
+    labels:
+      - dependencies
+      - baackend
+    schedule:
+      interval: weekly
+      day: friday
+      time: "12:00"
+      timezone: Asia/Shanghai
+    versioning-strategy: increase
+    rebase-strategy: disabled
