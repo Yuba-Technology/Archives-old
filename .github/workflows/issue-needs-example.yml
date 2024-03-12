@@ -1,0 +1,24 @@
+# **Change these placeholders with your project's information**
+# Yuba-Technology/Archives: The URL of your project's repository. e.g. username/repo
+name: Issue needs example
+
+on:
+  issues:
+    types: [labeled]
+
+env:
+  FORCE_COLOR: 2
+  NODE: 20
+
+jobs:
+  issue-labeled:
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'needs example'
+    steps:
+      - name: awaiting reply
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: "create-comment"
+          token: ${{ secrets.BG_TOKEN }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}. Bug reports must include a **live demo** of the issue. You can visit our [CONTRIBUTING.md](https://github.com/Yuba-Technology/Archives/blob/main/.github/CONTRIBUTING.md) for more information on how to create a live demo.

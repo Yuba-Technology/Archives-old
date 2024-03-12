@@ -1,0 +1,23 @@
+name: Close Issue Awaiting Reply
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+env:
+  FORCE_COLOR: 2
+  NODE: 20
+
+jobs:
+  issue-close-require:
+    runs-on: ubuntu-latest
+    steps:
+      - name: awaiting reply
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: "close-issues"
+          token: ${{ secrets.BG_TOKEN }}
+          labels: "awaiting-reply"
+          inactive-day: 14
+          body: |
+            As the issue was labeled with `awaiting-reply`, but there has been no response in 14 days, this issue will be closed. If you have any questions, you can comment/reply. Thank you for your contribution.
