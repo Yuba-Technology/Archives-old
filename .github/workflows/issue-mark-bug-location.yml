@@ -1,0 +1,29 @@
+name: Add label based on bug location
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  add-label:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'bug')
+    steps:
+      - name: Get bug location
+        id: bug_location
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const regex = /Where does the bug occur?.*(Frontend|Backend)/s;
+            const matchResult = context.payload.issue.body.match(regex);
+            const bugLocation = matchResult ? matchResult[1].toLowerCase() : '';
+            console.log('bugLocation:', bugLocation);
+            return bugLocation;
+          result-encoding: string
+
+      - name: Add labels
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: "add-labels"
+          token: ${{ secrets.BG_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          labels: ${{ steps.bug_location.outputs.result }}
