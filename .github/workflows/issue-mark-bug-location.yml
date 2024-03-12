@@ -1,7 +1,12 @@
 name: Add label based on bug location
+
 on:
   issues:
     types: [opened]
+
+env:
+  FORCE_COLOR: 2
+  NODE: 20
 
 jobs:
   add-label:
