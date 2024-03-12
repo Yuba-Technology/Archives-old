@@ -1,2 +1,2 @@
-server/** @yuba-technology/backend-team
-web/** @yuba-technology/frontend-team
+src/server/** @yuba-technology/backend-team
+src/web/** @yuba-technology/frontend-team
