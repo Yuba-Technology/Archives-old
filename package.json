@@ -33,6 +33,7 @@
     },
     "homepage": "https://github.com/Yuba-Technology/Archives#readme",
     "dependencies": {
+        "bootstrap": "^5.3.3",
         "crossnote": "^0.9.8",
         "element-plus": "^2.5.5"
     },

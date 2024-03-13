@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const { VueLoaderPlugin } = require("vue-loader");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -12,18 +12,19 @@ const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 
 module.exports = {
     entry: {
-        index: path.resolve(__dirname, "index.js"),
+        index: path.resolve(__dirname, "index.js")
     },
     output: {
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, "../../dist/web"),
-        clean: true,
+        clean: true
     },
     resolve: {
         alias: {
             "@": path.resolve(__dirname, ""),
+            "@assets": path.resolve(__dirname, "../assets")
         },
-        extensions: [".js", ".mjs", ".mts", ".json", ".vue"],
+        extensions: [".js", ".mjs", ".mts", ".json", ".vue"]
     },
     module: {
         rules: [
@@ -32,49 +33,40 @@ module.exports = {
                 loader: "vue-loader",
                 options: {
                     transformToRequire: {
-                        iframe: "src",
-                    },
-                },
-            },
-            {
-                test: /\.html$/,
-                use: ["html-loader"],
+                        iframe: "src"
+                    }
+                }
             },
             {
                 test: /\.s?css$|\.sass$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
             },
             {
                 test: /\.(bmp|ico|png|jpe?g|gif|svg)$/i,
-                type: "asset/resource",
+                type: "asset/resource"
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: "asset/resource",
-            },
-        ],
+                type: "asset/resource"
+            }
+        ]
     },
     plugins: [
         // Auto import Element Plus components
         AutoImport({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [ElementPlusResolver()]
         }),
         Components({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [ElementPlusResolver()]
         }),
         // For public resources
-        // new CopyWebpackPlugin({
-        //     patterns: [{ from: "public", to: "public" }],
-        // }),
+        new CopyWebpackPlugin({
+            patterns: [{ from: "public", to: "" }]
+        }),
         new VueLoaderPlugin(),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "index.html"),
-            filename: "index.html",
-            chunks: ["index"],
-        }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css",
-        }),
-    ],
+            filename: "[name].bundle.css",
+            chunkFilename: "[id].bundle.css"
+        })
+    ]
 };
