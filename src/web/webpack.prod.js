@@ -7,9 +7,11 @@ const packageData = require("../../package.json");
 
 const banner = () => {
     const name = formatName(packageData.name);
+    const version = packageData.version;
+    const author = packageData.author;
     const year = new Date().getFullYear();
     const license = packageData.license;
-    return formatBannerString(name, packageData.version, year, license);
+    return formatBannerString(name, version, year, author, license);
 };
 
 const formatName = (name) => {
@@ -19,10 +21,10 @@ const formatName = (name) => {
         .join(" ");
 };
 
-const formatBannerString = (name, version, year, license) => {
+const formatBannerString = (name, version, year, author, license) => {
     return `
         ${name} v${version}
-        Copyright (c) 2015-${year} Yuba Technology
+        Copyright (c) 2015-${year} ${author}
         Released under the ${license} License.
         `
         .split("\n")
