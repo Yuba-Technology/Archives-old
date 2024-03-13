@@ -26,15 +26,27 @@
         "web",
         "frontend"
     ],
-    "author": "Yuba Technology",
+    "author": "Yuba Technology, all Archives contributors and You",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/Yuba-Technology/Archives/issues"
     },
     "homepage": "https://github.com/Yuba-Technology/Archives#readme",
     "dependencies": {
-        "crossnote": "^0.9.8",
-        "element-plus": "^2.5.5"
+        "element-plus": "^2.5.5",
+        "linkify-it": "^5.0.0",
+        "markdown-it": "^14.0.0",
+        "markdown-it-abbr": "^2.0.0",
+        "markdown-it-cjk-breaks": "^2.0.0",
+        "markdown-it-container": "^4.0.0",
+        "markdown-it-deflist": "^3.0.0",
+        "markdown-it-emoji": "^3.0.0",
+        "markdown-it-footnote": "^4.0.0",
+        "markdown-it-for-inline": "^2.0.1",
+        "markdown-it-ins": "^4.0.0",
+        "markdown-it-mark": "^4.0.0",
+        "markdown-it-sub": "^2.0.0",
+        "markdown-it-sup": "^2.0.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.23.9",
