@@ -45,7 +45,7 @@ For a complete look at our labels, see the [project labels page](https://github.
 
 A bug is a _demonstrable problem_ that is caused by the code in the repository. Good bug reports are extremely helpful, so thanks!
 
-Guidelines for frontend bug reports:
+Guidelines for bug reports:
 
 0. **[Validate your HTML](https://html5.validator.nu/)** to ensure your problem isn't caused by a simple error in your own code.
 
@@ -54,18 +54,6 @@ Guidelines for frontend bug reports:
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the latest `main` (or `v4-dev` branch if the issue is about v4) in the repository.
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test case](https://css-tricks.com/reduced-test-cases/) and a live example. Here's a useful template to get you started: [Template for reduced test cases](-project-test-case-template-).
-
-Guidelines for backend bug reports:
-
-0. **Validate your Python code** - Use tools like PyLint or PyFlakes to ensure your problem isn't caused by a simple error in your own code.
-
-1. **Use the GitHub issue search** &mdash; check if the issue has already been reported.
-
-2. **Check if the issue has been fixed** &mdash; try to reproduce it using the latest `main` branch in the repository.
-
-3. **Isolate the problem** &mdash; ideally create a minimal, complete, and verifiable example. This could be a few lines of code that reproduces the issue, along with a detailed explanation of the expected versus actual behavior.
-
-4. **Share your environment** &mdash; detail the version of Python you're using, as well as any relevant libraries or frameworks. You can use `pip freeze` to get a list of your Python environment's installed packages and their versions.
 
 A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.
 
@@ -119,14 +107,14 @@ Similarly, when contributing to documentation, you should edit the documentation
 
 Adhering to the following process is the best way to get your work included in the project:
 
-1. [Fork](https://help.github.com/articles/fork-a-repo/) the project, clone your fork,
+1. [Fork](https://help.github.com/articles/fork-a-repo/) Archives, clone your fork,
    and configure the remotes:
 
    ```bash
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/<-project->.git
+   git clone https://github.com/Yuba-Technology/Archives.git
    # Navigate to the newly cloned directory
-   cd <-project->
+   cd Archives
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/Yuba-Technology/Archives.git
    ```
@@ -191,14 +179,6 @@ Adhering to the following process is the best way to get your work included in t
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
-
-### Python
-
-- 4 spaces (no tabs)
-- 79 character line limit
-- 2 lines between top-level comments and the first line of code
-- 1 line between class and function definitions
-- 1 line at the end of the file
 
 ### Checking coding style
 
