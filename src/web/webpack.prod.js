@@ -7,11 +7,9 @@ const common = require("./webpack.common.js");
 
 const banner = () => {
     const name = formatName(packageData.name);
-    const version = packageData.version;
-    const author = packageData.author;
+    const { version, author, license } = packageData;
     const year = new Date().getFullYear();
-    const { license } = packageData;
-    return formatBannerString(name, packageData.version, year, license);
+    return formatBannerString(name, version, year, author, license);
 };
 
 const formatName = (name) => {
