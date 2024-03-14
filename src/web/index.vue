@@ -1,6 +1,12 @@
 <template>
     <div>
         <h1>Hello, world!</h1>
-        <img src="@public/images/archives-stamp.svg" alt="" />
+        <img src="@assets/images/archives-stamp.svg" alt="" />
     </div>
 </template>
+
+<script>
+export default {
+    name: "IndexPage"
+};
+</script>

@@ -1,17 +1,17 @@
+// const path = require("node:path");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const TerserPlugin = require("terser-webpack-plugin");
-const common = require("./webpack.common.js");
-const path = require("path");
 const packageData = require("../../package.json");
+const common = require("./webpack.common.js");
 
 const banner = () => {
     const name = formatName(packageData.name);
     const version = packageData.version;
     const author = packageData.author;
     const year = new Date().getFullYear();
-    const license = packageData.license;
-    return formatBannerString(name, version, year, author, license);
+    const { license } = packageData;
+    return formatBannerString(name, packageData.version, year, license);
 };
 
 const formatName = (name) => {
@@ -37,23 +37,16 @@ module.exports = merge(common, {
     mode: "production",
     target: ["web", "es5"],
     // devtool: false,
-    resolve: {
-        alias: {
-            "@public": path.resolve(__dirname, "../../public"),
-        },
-    },
     module: {
         rules: [
             {
                 test: /\.m?js$/,
-                // include: path.resolve(__dirname, "dist"),
-                // include: path.resolve(__dirname, "src", "js"),
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
-                },
-            },
-        ],
+                    loader: "babel-loader"
+                }
+            }
+        ]
     },
     optimization: {
         minimize: true,
@@ -66,18 +59,18 @@ module.exports = merge(common, {
                     },
                     compress: {
                         drop_console: true, // 删除所有的console语句
-                        drop_debugger: true, // 删除所有的debugger语句
-                    },
-                },
-            }),
-        ],
+                        drop_debugger: true // 删除所有的debugger语句
+                    }
+                }
+            })
+        ]
     },
     plugins: [
         new webpack.BannerPlugin({
             banner: banner(),
             // banner: `版权所有：${new Date().getFullYear()}`,
             raw: false, // 如果为true，将直接将内容插入到源文件中，可能会导致语法错误
-            entryOnly: true, // 如果为true，将只在入口文件中添加版权信息
-        }),
-    ],
+            entryOnly: true // 如果为true，将只在入口文件中添加版权信息
+        })
+    ]
 });
