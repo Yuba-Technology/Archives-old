@@ -111,9 +111,11 @@ module.exports = {
             }
         },
         {
-            files: ["wewbpack.*.js"],
+            files: ["webpack.*.js"],
             plugins: ["node"],
-            processor: "node/file"
+            env: {
+                node: true
+            }
         },
         {
             files: ["js/**"],
