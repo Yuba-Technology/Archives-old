@@ -1,14 +1,14 @@
+// const path = require("node:path");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const TerserPlugin = require("terser-webpack-plugin");
-const common = require("./webpack.common.js");
-const path = require("path");
 const packageData = require("../../package.json");
+const common = require("./webpack.common.js");
 
 const banner = () => {
     const name = formatName(packageData.name);
     const year = new Date().getFullYear();
-    const license = packageData.license;
+    const { license } = packageData;
     return formatBannerString(name, packageData.version, year, license);
 };
 

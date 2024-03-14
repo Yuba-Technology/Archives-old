@@ -1,5 +1,5 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require("node:path");
+// const webpack = require("webpack");
 const { VueLoaderPlugin } = require("vue-loader");
 // const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
