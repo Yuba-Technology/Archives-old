@@ -37,6 +37,8 @@
     },
     "homepage": "https://github.com/Yuba-Technology/Archives#readme",
     "dependencies": {
+        "@types/d3-scale-chromatic": "^3.0.3",
+        "bootstrap": "^5.3.3",
         "element-plus": "^2.5.5",
         "linkify-it": "^5.0.0",
         "markdown-it": "^14.0.0",
@@ -51,8 +53,6 @@
         "markdown-it-mark": "^4.0.0",
         "markdown-it-sub": "^2.0.0",
         "markdown-it-sup": "^2.0.0",
-        "@types/d3-scale-chromatic": "^3.0.3",
-        "bootstrap": "^5.3.3",
         "webpack-merge": "^5.10.0"
     },
     "devDependencies": {
@@ -77,6 +77,7 @@
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-markdown": "^4.0.1",
+        "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-unicorn": "^51.0.1",
         "eslint-plugin-vue": "^9.23.0",
         "file-loader": "^6.2.0",
