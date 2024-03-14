@@ -111,6 +111,17 @@ module.exports = {
             }
         },
         {
+            files: ["wewbpack.*.js"],
+            plugins: ["node"],
+            processor: "node/file"
+        },
+        {
+            files: ["js/**"],
+            parserOptions: {
+                sourceType: "module"
+            }
+        },
+        {
             files: ["**/*.md"],
             plugins: ["markdown"],
             processor: "markdown/markdown"
