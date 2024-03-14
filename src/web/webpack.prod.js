@@ -54,11 +54,11 @@ module.exports = merge(common, {
                 terserOptions: {
                     output: {
                         // comments: false, // 删除所有的注释
-                    },
-                    compress: {
-                        drop_console: true, // 删除所有的console语句
-                        drop_debugger: true // 删除所有的debugger语句
                     }
+                    // compress: {
+                    //     drop_console: true, // 删除所有的console语句
+                    //     drop_debugger: true // 删除所有的debugger语句
+                    // }
                 }
             })
         ]
