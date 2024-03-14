@@ -1,2 +1,4 @@
 src/server/** @yuba-technology/backend-team
 src/web/** @yuba-technology/frontend-team
+src/assets/** @yuba-technology/frontend-team
+src/scss/** @yuba-technology/frontend-team

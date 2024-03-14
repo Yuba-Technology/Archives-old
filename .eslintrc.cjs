@@ -103,6 +103,17 @@ module.exports = {
                 "no-console": "off",
                 "unicorn/prefer-top-level-await": "off"
             }
+        },
+        {
+            files: ["js/**"],
+            parserOptions: {
+                sourceType: "module"
+            }
+        },
+        {
+            files: ["**/*.md"],
+            plugins: ["markdown"],
+            processor: "markdown/markdown"
         }
     ],
     settings: {
