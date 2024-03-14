@@ -12,17 +12,17 @@ const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 
 module.exports = {
     entry: {
-        index: path.resolve(__dirname, "index.js")
+        index: path.resolve(__dirname, "src/web/index.js")
     },
     output: {
         filename: "[name].bundle.js",
-        path: path.resolve(__dirname, "../../dist/web"),
+        path: path.resolve(__dirname, "dist/web"),
         clean: true
     },
     resolve: {
         alias: {
             "@": path.resolve(__dirname, ""),
-            "@assets": path.resolve(__dirname, "../assets")
+            "@assets": path.resolve(__dirname, "src/assets")
         },
         extensions: [".js", ".mjs", ".mts", ".json", ".vue"]
     },

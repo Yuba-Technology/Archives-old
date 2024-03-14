@@ -2,7 +2,7 @@
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const TerserPlugin = require("terser-webpack-plugin");
-const packageData = require("../../package.json");
+const packageData = require("./package.json");
 const common = require("./webpack.common.js");
 
 const banner = () => {
