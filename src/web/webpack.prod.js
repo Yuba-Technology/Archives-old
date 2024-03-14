@@ -1,15 +1,15 @@
+// const path = require("node:path");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const TerserPlugin = require("terser-webpack-plugin");
-const common = require("./webpack.common.js");
-const path = require("path");
 const packageData = require("../../package.json");
+const common = require("./webpack.common.js");
 
 const banner = () => {
     const name = formatName(packageData.name);
+    const { version, author, license } = packageData;
     const year = new Date().getFullYear();
-    const license = packageData.license;
-    return formatBannerString(name, packageData.version, year, license);
+    return formatBannerString(name, version, year, author, license);
 };
 
 const formatName = (name) => {
@@ -19,10 +19,10 @@ const formatName = (name) => {
         .join(" ");
 };
 
-const formatBannerString = (name, version, year, license) => {
+const formatBannerString = (name, version, year, author, license) => {
     return `
         ${name} v${version}
-        Copyright (c) 2015-${year} Yuba Technology
+        Copyright (c) 2015-${year} ${author}
         Released under the ${license} License.
         `
         .split("\n")

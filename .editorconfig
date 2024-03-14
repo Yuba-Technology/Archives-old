@@ -2,21 +2,21 @@
 root = true
 
 [*]
+charset = utf-8
+end_of_line = lf
 indent_size = 4
 indent_style = space
-end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
 insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+indent_size = 2
 
 [*.py]
 max_line_length = 79
-insert_final_newline = true
 
 [*.yml]
 indent_size = 2
-insert_final_newline = true
 
 [*.yaml]
 indent_size = 2
-insert_final_newline = true

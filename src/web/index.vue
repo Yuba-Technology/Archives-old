@@ -4,3 +4,9 @@
         <img src="@assets/images/archives-stamp.svg" alt="" />
     </div>
 </template>
+
+<script>
+export default {
+    name: "IndexPage"
+};
+</script>
