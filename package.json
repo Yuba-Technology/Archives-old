@@ -11,11 +11,12 @@
         "format": "prettier --write . --ignore-path .gitignore",
         "lint": "eslint . --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore",
         "lint-fix": "eslint --fix . --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore",
-        "web": "npm-run-all --parallel web-build",
+        "format-and-lint": "npm-run-all --parallel format lint",
         "web-build": "webpack --config src/web/webpack.prod.js",
         "web-dev": "webpack --config src/web/webpack.dev.js",
         "web-server": "webpack-dev-server --open --config src/web/webpack.dev.js",
         "web-test": "exit 0",
+        "server-test": "exit 0",
         "build": "npm-run-all --parallel web",
         "test": "npm-run-all --parallel web-test"
     },
