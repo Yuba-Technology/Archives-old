@@ -1,4 +1,4 @@
-name: Frontend CI
+name: Backend CI
 
 on:
   push:
@@ -12,7 +12,7 @@ env:
   NODE: 20
 
 jobs:
-  Frontend-CI:
+  Backend-CI:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,8 +30,5 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: Build web
-        run: npm run web-build
-
-      - name: Run web tests
-        run: npm run web-test
+      - name: Run server tests
+        run: npm run server-test

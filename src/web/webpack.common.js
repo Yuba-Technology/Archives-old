@@ -53,10 +53,16 @@ module.exports = {
     },
     plugins: [
         // Auto import Element Plus components
+        // We have to disable the eslint rule for the following line, because we can't change
+        // the AutoImport function itself so we have to adapt to it ┑(~Д ~)┍
+        // eslint-disable-next-line new-cap
         AutoImport({
+            // eslint-disable-next-line new-cap
             resolvers: [ElementPlusResolver()]
         }),
+        // eslint-disable-next-line new-cap
         Components({
+            // eslint-disable-next-line new-cap
             resolvers: [ElementPlusResolver()]
         }),
         // For public resources
