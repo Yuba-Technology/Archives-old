@@ -21,7 +21,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "@": path.resolve(__dirname, ""),
+            "@": path.resolve(__dirname, "src/web"),
             "@assets": path.resolve(__dirname, "src/assets")
         },
         extensions: [".js", ".mjs", ".mts", ".json", ".vue"]
@@ -36,6 +36,10 @@ module.exports = {
                         iframe: "src"
                     }
                 }
+            },
+            {
+                test: /\.ya?ml$/,
+                use: "yaml-loader"
             },
             {
                 test: /\.s?css$|\.sass$/,
