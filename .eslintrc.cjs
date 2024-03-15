@@ -91,7 +91,16 @@ module.exports = {
     },
     overrides: [
         {
-            files: ["src/**"],
+            files: ["src/web/*.js", "src/web/*.vue"],
+            env: {
+                browser: true
+            },
+            rules: {
+                "unicorn/filename-case": "off"
+            }
+        },
+        {
+            files: ["src/server/**"],
             env: {
                 browser: false,
                 node: true
@@ -132,7 +141,10 @@ module.exports = {
     settings: {
         "import/resolver": {
             alias: {
-                map: [["@", "./src"]]
+                map: [
+                    ["@", "./src/web"],
+                    ["@assets", "./src/assets"]
+                ]
             },
             node: {
                 extensions: [".js", ".json", ".scss"]

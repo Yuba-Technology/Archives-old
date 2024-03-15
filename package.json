@@ -17,7 +17,7 @@
         "web-server": "webpack-dev-server --open --config webpack.dev.js",
         "web-test": "exit 0",
         "server-test": "exit 0",
-        "build": "npm-run-all --parallel web",
+        "build": "npm-run-all --parallel web-build",
         "test": "npm-run-all --parallel web-test"
     },
     "repository": {
@@ -107,6 +107,7 @@
         "vue-template-compiler": "^2.7.16",
         "webpack": "^5.90.1",
         "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^4.15.1"
+        "webpack-dev-server": "^4.15.1",
+        "yaml-loader": "^0.8.1"
     }
 }
