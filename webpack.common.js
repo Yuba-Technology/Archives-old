@@ -10,6 +10,9 @@ const AutoImport = require("unplugin-auto-import/webpack").default;
 const Components = require("unplugin-vue-components/webpack").default;
 const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 
+// Plugin for injecting the config file into the html
+const { InjectConfigPlugin } = require("./scripts/injectConfigPlugin.js");
+
 module.exports = {
     entry: {
         index: path.resolve(__dirname, "src/web/index.js")
@@ -77,6 +80,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].bundle.css",
             chunkFilename: "[id].bundle.css"
+        }),
+        new InjectConfigPlugin({
+            configPath: path.resolve(__dirname, "src/web/config.yml")
         })
     ]
 };
