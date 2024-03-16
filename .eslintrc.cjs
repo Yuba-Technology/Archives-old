@@ -65,7 +65,16 @@ module.exports = {
         "no-console": "error",
         "no-negated-condition": "off",
         "object-curly-spacing": ["error", "always"],
-        "operator-linebreak": ["error", "after"],
+        "operator-linebreak": [
+            "error",
+            "after",
+            {
+                overrides: {
+                    "?": "before",
+                    ":": "before"
+                }
+            }
+        ],
         "prefer-template": "error",
         quotes: ["error", "double"],
         semi: ["error", "always"],
@@ -114,7 +123,7 @@ module.exports = {
             }
         },
         {
-            files: ["webpack.*.js", "jest.config.js"],
+            files: ["webpack.*.js", "jest.config.js", "scripts/*.js"],
             plugins: ["node"],
             env: {
                 node: true
