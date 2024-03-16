@@ -2,22 +2,20 @@ import { AVAILABLE_LANGUAGES } from "./config.js";
 
 class Language {
     constructor() {
-        this.defaultLanguage = "en-US";
-        this.userAgentLanguage = navigator.language || navigator.userLanguage;
-        this.availableLanguages = AVAILABLE_LANGUAGES;
+        this.default = "en-US";
+        this.userAgentPreferred = navigator.language || navigator.userLanguage;
+        this.available = AVAILABLE_LANGUAGES;
 
-        this.getBestMatchLanguage = this.getBestMatchLanguage.bind(this);
+        this.getBestMatch = this.getBestMatch.bind(this);
         const preferredLanguage =
             window.localStorage.getItem("language") ||
-            this.userAgentLanguage ||
-            this.defaultLanguage;
-        this.language =
-            this.getBestMatchLanguage(preferredLanguage) ||
-            this.defaultLanguage;
+            this.userAgentPreferred ||
+            this.default;
+        this.current = this.getBestMatch(preferredLanguage) || this.default;
         this.status = "loading";
         this.data = {};
-        this.setLanguage = this.setLanguage.bind(this);
-        this.setLanguage(this.language);
+        this.set = this.set.bind(this);
+        this.set(this.current);
     }
 
     /**
@@ -25,19 +23,15 @@ class Language {
      * @param {string} language - The language to match.
      * @returns {string} - The best match language.
      */
-    getBestMatchLanguage(language) {
-        // example: input "en-US",
-        // match "en-US", "en", "en-GB", null
-        const languages = Object.keys(this.availableLanguages);
+    getBestMatch(language) {
+        // example: input "en-US", this.available = { "en-GB": "English" }
+        // match "en-US", "en-GB", null
+        const languages = Object.keys(this.available);
         if (languages.includes(language)) {
             return language;
         }
 
         const languageCode = language.split("-")[0];
-        if (languages.includes(languageCode)) {
-            return languageCode;
-        }
-
         for (const lang of languages) {
             if (lang.startsWith(languageCode)) {
                 return lang;
@@ -47,24 +41,30 @@ class Language {
         return null;
     }
 
-    setLanguage(language) {
-        if (!this.availableLanguages[language]) {
+    /**
+     * Set the current language and load the language data.
+     * @param {string} language - The language to be set.
+     * @returns {Promise<void>}
+     */
+    async set(language) {
+        if (!this.available[language]) {
             throw new Error(`Language "${language}" is not available`);
         }
 
         window.localStorage.setItem("language", language);
+        this.current = language;
         this.data = {};
         this.status = "loading";
-        this.loadLangusgeData(language);
+        await this.loadLanguageData(language);
     }
 
     /**
      * Load language data.
      * @param {string} language The language to be loaded.
-     * @returns {void}
+     * @returns {Promise<void>}
      */
-    async loadLangusgeData(language) {
-        if (!this.availableLanguages[language]) {
+    async loadLanguageData(language) {
+        if (!this.available[language]) {
             throw new Error(`Language "${language}" is not available`);
         }
 
@@ -77,7 +77,7 @@ class Language {
 
         const data = await Promise.all([
             import(`@assets/locales/${language}.yml`),
-            import(`@assets/locales/${this.defaultLanguage}.yml`)
+            import(`@assets/locales/${this.default}.yml`)
         ]);
 
         const targetData = data[0].default;

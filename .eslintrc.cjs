@@ -114,22 +114,27 @@ module.exports = {
             }
         },
         {
-            files: ["js/**"],
-            parserOptions: {
-                sourceType: "module"
-            }
-        },
-        {
-            files: ["webpack.*.js"],
+            files: ["webpack.*.js", "jest.config.js"],
             plugins: ["node"],
             env: {
                 node: true
             }
         },
         {
-            files: ["js/**"],
+            files: ["TESTS/**/unit/**"],
+            plugins: ["jest"],
+            env: {
+                "jest/globals": true
+            },
+            extends: ["plugin:jest/recommended"],
             parserOptions: {
                 sourceType: "module"
+            },
+            rules: {
+                "no-console": "off",
+                "unicorn/consistent-function-scoping": "off",
+                "unicorn/no-useless-undefined": "off",
+                "unicorn/prefer-add-event-listener": "off"
             }
         },
         {
