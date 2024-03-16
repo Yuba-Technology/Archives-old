@@ -15,7 +15,6 @@ class Language {
         this.status = "loading";
         this.data = {};
         this.set = this.set.bind(this);
-        this.set(this.current);
     }
 
     /**
@@ -41,6 +40,29 @@ class Language {
         return null;
     }
 
+    _deepMerge(target, source) {
+        if (typeof target !== "object" || target === null) {
+            target = {};
+        }
+
+        if (typeof source !== "object" || source === null) {
+            source = {};
+        }
+
+        for (const key in source) {
+            if (!Object.hasOwn(source, key)) {
+                continue;
+            }
+
+            target[key] =
+                source[key] instanceof Object
+                    ? this._deepMerge(target[key], source[key])
+                    : source[key];
+        }
+
+        return target;
+    }
+
     /**
      * Set the current language and load the language data.
      * @param {string} language - The language to be set.
@@ -52,6 +74,7 @@ class Language {
         }
 
         window.localStorage.setItem("language", language);
+        document.documentElement.lang = language;
         this.current = language;
         this.data = {};
         this.status = "loading";
@@ -82,7 +105,8 @@ class Language {
 
         const targetData = data[0].default;
         const defaultData = data[1].default;
-        this.data = { ...defaultData, ...targetData };
+        // this.data = { ...defaultData, ...targetData };
+        this.data = this._deepMerge(defaultData, targetData);
         this.status = "loaded";
     }
 }
