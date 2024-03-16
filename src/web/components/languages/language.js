@@ -41,7 +41,12 @@ class Language {
         return null;
     }
 
-    set(language) {
+    /**
+     * Set the current language and load the language data.
+     * @param {string} language - The language to be set.
+     * @returns {Promise<void>}
+     */
+    async set(language) {
         if (!this.available[language]) {
             throw new Error(`Language "${language}" is not available`);
         }
@@ -50,15 +55,15 @@ class Language {
         this.current = language;
         this.data = {};
         this.status = "loading";
-        this.loadLangusgeData(language);
+        await this.loadLanguageData(language);
     }
 
     /**
      * Load language data.
      * @param {string} language The language to be loaded.
-     * @returns {void}
+     * @returns {Promise<void>}
      */
-    async loadLangusgeData(language) {
+    async loadLanguageData(language) {
         if (!this.available[language]) {
             throw new Error(`Language "${language}" is not available`);
         }

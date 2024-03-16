@@ -9,5 +9,10 @@ module.exports = {
                 targets: "ie 11" // 几乎不兼容所有ES6+的语法
             }
         ]
-    ]
+    ],
+    env: {
+        test: {
+            plugins: ["@babel/plugin-transform-modules-commonjs"]
+        }
+    }
 };
