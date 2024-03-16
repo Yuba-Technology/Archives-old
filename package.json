@@ -12,6 +12,7 @@
         "lint": "eslint . --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore",
         "lint-fix": "eslint --fix . --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore",
         "format-and-lint": "npm-run-all --parallel format lint",
+        "format-and-lint-fix": "npm-run-all --parallel format lint-fix",
         "web-build": "webpack --config webpack.prod.js",
         "web-dev": "webpack --config webpack.dev.js",
         "web-server": "webpack-dev-server --open --config webpack.dev.js",
