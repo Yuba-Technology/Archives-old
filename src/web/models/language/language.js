@@ -1,6 +1,21 @@
 import { AVAILABLE_LANGUAGES } from "./config.js";
 
+/**
+ * Class for managing the language of the website.
+ * @class Language
+ * @property {string} default - The default language. Defaults to "en-US".
+ * @property {string} userAgentPreferred - The language preferred by the user agent.
+ * @property {Object} available - The available languages.
+ * @property {string} current - The current language.
+ * @property {string} status - The status of the language. It can be "loading" or "loaded".
+ * @property {Object} data - The language data.
+ * @exports Language
+ * @requires AVAILABLE_LANGUAGES
+ */
 class Language {
+    /**
+     * @constructor
+     */
     constructor() {
         this.default = "en-US";
         this.userAgentPreferred = navigator.language || navigator.userLanguage;
@@ -19,6 +34,10 @@ class Language {
 
     /**
      * Get the best match language from the available languages.
+     * This method is mainly used for window.navigator.language,
+     * which may return a language code that is not in the
+     * available languages like "en" and "en-GB".
+     * @method
      * @param {string} language - The language to match.
      * @returns {string} - The best match language.
      */
@@ -40,6 +59,30 @@ class Language {
         return null;
     }
 
+    /**
+     * Deep merge two objects.
+     * @method
+     * @param {Object} target - The target object.
+     * @param {Object} source - The source object.
+     * @returns {Object} - The merged object.
+     * @private
+     * @static
+     * @example
+     * const target = {
+     *     a: 1,
+     *     b: {
+     *         c: 2,
+     *     }
+     * };
+     * const source = {
+     *     b: {
+     *         c: 3,
+     *         d: 4
+     *      }
+     * };
+     * const output = deepMerge(target, source);
+     * console.log(output); // { a: 1, b: { c: 2, d: 4 } }
+     */
     _deepMerge(target, source) {
         if (typeof target !== "object" || target === null) {
             target = {};
@@ -64,7 +107,9 @@ class Language {
     }
 
     /**
-     * Set the current language and load the language data.
+     * Set the current language and load the language data. This method will set the `current` property to the given language, and load the language data. If the language is not available, an error will be thrown. It also sets the `status` property to "loading" and the `data` property to an empty object before loading the language data.
+     * @method
+     * @async
      * @param {string} language - The language to be set.
      * @returns {Promise<void>}
      */
@@ -82,7 +127,9 @@ class Language {
     }
 
     /**
-     * Load language data.
+     * Load language data. This method will change the `status` property to "loaded" after the language data is loaded to `data` property. It also sets the `data` property to an empty object before loading the language data.
+     * @method
+     * @async
      * @param {string} language The language to be loaded.
      * @returns {Promise<void>}
      */
@@ -111,4 +158,4 @@ class Language {
     }
 }
 
-export { Language };
+export default Language;
