@@ -30,7 +30,6 @@ class Language {
         this.status = "loading";
         this.data = {};
         this.set = this.set.bind(this);
-        this.set(this.current);
     }
 
     /**
@@ -94,7 +93,11 @@ class Language {
         }
 
         for (const key in source) {
-            if (!Object.hasOwn(source, key)) {
+            if (
+                !Object.hasOwn(source, key) ||
+                key === "__proto__" || // Prevent prototype pollution
+                key === "prototype" // Same as above
+            ) {
                 continue;
             }
 
@@ -120,6 +123,7 @@ class Language {
         }
 
         window.localStorage.setItem("language", language);
+        document.documentElement.lang = language;
         this.current = language;
         this.data = {};
         this.status = "loading";
@@ -152,7 +156,7 @@ class Language {
 
         const targetData = data[0].default;
         const defaultData = data[1].default;
-        this.data = { ...defaultData, ...targetData };
+        this.data = this._deepMerge(defaultData, targetData);
         this.status = "loaded";
     }
 }
