@@ -121,7 +121,7 @@ module.exports = {
             }
         },
         {
-            files: ["TESTS/**/unit/**"],
+            files: ["**/TESTS/**"],
             plugins: ["jest"],
             env: {
                 "jest/globals": true
