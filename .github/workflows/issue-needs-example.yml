@@ -2,6 +2,9 @@
 # Yuba-Technology/Archives: The URL of your project's repository. e.g. username/repo
 name: Issue needs example
 
+permissions:
+  issues: write
+
 on:
   issues:
     types: [labeled]
