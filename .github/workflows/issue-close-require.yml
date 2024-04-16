@@ -8,10 +8,18 @@ env:
   FORCE_COLOR: 2
   NODE: 20
 
+permissions:
+  contents: read
+
 jobs:
   issue-close-require:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: awaiting reply
         uses: actions-cool/issues-helper@v3
         with:

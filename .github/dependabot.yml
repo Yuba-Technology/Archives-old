@@ -35,3 +35,8 @@ updates:
       timezone: Asia/Shanghai
     versioning-strategy: increase
     rebase-strategy: disabled
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
