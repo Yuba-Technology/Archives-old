@@ -1,5 +1,8 @@
 name: Lint
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -10,9 +13,6 @@ on:
 env:
   FORCE_COLOR: 2
   NODE: 20
-
-permissions:
-  contents: read
 
 jobs:
   lint:
