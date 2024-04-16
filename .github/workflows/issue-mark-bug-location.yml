@@ -1,5 +1,8 @@
 name: Add label based on bug location
 
+permissions:
+  issues: write
+
 on:
   issues:
     types: [opened]
