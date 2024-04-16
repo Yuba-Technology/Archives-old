@@ -3,6 +3,7 @@
 @mixin generate-variables($map, $prefix: "a") {
     @each $item, $value in $map {
         $var-name: "--#{$prefix}-#{$item}";
+
         #{$var-name}: $value;
     }
 }

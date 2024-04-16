@@ -1,9 +1,9 @@
-$global-bg-color: #010409;
+$global-bg-color: #010409 !default;
 
 $colors: (
-    "global-bg": #010409
-);
+    "global-bg": $global-bg-color
+) !default;
 
 $exports: (
     "colors": $colors
-);
+) !default;

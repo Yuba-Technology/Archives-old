@@ -1,7 +1,7 @@
 @use "themes/light" as light;
 @use "themes/dark" as dark;
-@import "base/variables";
 
+@import "base/variables";
 @import "mixins/variables";
 
 @include generate-root-variables(light.$exports);
