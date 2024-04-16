@@ -1,5 +1,8 @@
 name: Close Issue Awaiting Reply
 
+permissions:
+  issues: write
+
 on:
   schedule:
     - cron: "0 0 * * *"
