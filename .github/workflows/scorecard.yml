@@ -12,9 +12,7 @@ on:
   schedule:
     - cron: '35 7 * * 2'
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 # Declare default permissions as read only.
