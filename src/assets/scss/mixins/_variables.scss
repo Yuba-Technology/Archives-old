@@ -1,0 +1,16 @@
+@import "color-mode";
+
+@mixin generate-variables($map, $prefix: "a") {
+    @each $item, $value in $map {
+        $var-name: "--#{$prefix}-#{$item}";
+        #{$var-name}: $value;
+    }
+}
+
+@mixin generate-root-variables($maps, $mode: light, $root: false) {
+    @each $prefix, $map in $maps {
+        @include color-mode($mode, $root) {
+            @include generate-variables($map);
+        }
+    }
+}
