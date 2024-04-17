@@ -1,0 +1,23 @@
+# Archives Configuration
+
+# Site
+title: Archives
+subtitle: ""
+description: "A web archive"
+keywords: "archive, web"
+author: Yuba Technology, all Archives contributors and You
+language: en-US
+
+# URL
+# Set your site url here. For example, if you are using GitHub Pages,
+# set url as "https://username.github.io/repo-name"
+# Use `auto` will auto detect the url of your site in GitHub Pages.
+url: auto
+
+# Repositories
+# All the repositories that you want to include in this site.
+# You can add multiple repositories.
+repos:
+  - url: https://yuba.tech/archives-test # Repository URL
+    disabled: false # Set to true to disable this repository, default is false
+
