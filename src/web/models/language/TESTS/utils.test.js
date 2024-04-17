@@ -1,4 +1,4 @@
-import { getTranslation } from "../utils.js";
+import { getTranslation } from "@/models/language/utils.js";
 
 describe("getTranslation function", () => {
     it("should return the correct translation when the key exists", () => {
