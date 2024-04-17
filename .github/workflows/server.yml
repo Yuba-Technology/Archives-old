@@ -11,6 +11,9 @@ env:
   FORCE_COLOR: 2
   NODE: 20
 
+permissions:
+  contents: read
+
 jobs:
   Backend-CI:
     runs-on: ubuntu-latest
