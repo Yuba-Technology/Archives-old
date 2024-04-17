@@ -10,6 +10,9 @@ const AutoImport = require("unplugin-auto-import/webpack").default;
 const Components = require("unplugin-vue-components/webpack").default;
 const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 
+// Plugin for injecting the config file into the html
+const { InjectConfigPlugin } = require("./scripts/injectConfigPlugin.js");
+
 module.exports = {
     entry: {
         index: path.resolve(__dirname, "src/web/index.js")
@@ -52,10 +55,24 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: "asset/resource"
+            },
+            {
+                test: /config\.yml$/,
+                use: [
+                    {
+                        loader: path.resolve(
+                            __dirname,
+                            "scripts/configLoader.js"
+                        )
+                    }
+                ]
             }
         ]
     },
     plugins: [
+        new InjectConfigPlugin({
+            configPath: path.resolve(__dirname, "./src/web/config.yml")
+        }),
         // Auto import Element Plus components
         // We have to disable the eslint rule for the following line, because we can't change
         // the AutoImport function itself so we have to adapt to it ┑(~Д ~)┍
