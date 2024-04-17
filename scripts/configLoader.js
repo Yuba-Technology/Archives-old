@@ -34,5 +34,5 @@ class AutoInjectVariable {
 module.exports = function (source) {
     const data = yaml.load(source);
     const newData = new AutoInjectVariable(data).process();
-    this.callback(null, `module.exports = ${JSON.stringify(newData)}`);
+    return JSON.stringify(newData);
 };
