@@ -10,6 +10,9 @@ env:
   FORCE_COLOR: 2
   NODE: 20
 
+permissions:
+  contents: read
+
 jobs:
   issue-labeled:
     runs-on: ubuntu-latest
