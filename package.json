@@ -80,7 +80,7 @@
         "crypto-browserify": "^3.12.0",
         "css-loader": "^7.1.1",
         "cypress": "^13.8.1",
-        "eslint": "^8.57.0",
+        "eslint": "^9.1.1",
         "eslint-cli": "^1.1.1",
         "eslint-config-prettier": "^9.1.0",
         "eslint-config-xo": "^0.44.0",
