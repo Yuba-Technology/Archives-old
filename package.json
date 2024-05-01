@@ -67,7 +67,7 @@
         "@babel/preset-env": "^7.24.5",
         "@rushstack/eslint-patch": "^1.7.2",
         "@testing-library/dom": "^10.1.0",
-        "@testing-library/react": "^15.0.5",
+        "@testing-library/react": "^15.0.6",
         "@types/jest": "^29.5.12",
         "@vue/compiler-sfc": "^3.4.25",
         "@vue/eslint-config-prettier": "^9.0.0",
