@@ -45,7 +45,7 @@
     "dependencies": {
         "@types/d3-scale-chromatic": "^3.0.3",
         "bootstrap": "^5.3.3",
-        "element-plus": "^2.7.2",
+        "element-plus": "^2.7.3",
         "linkify-it": "^5.0.0",
         "markdown-it": "^14.0.0",
         "markdown-it-abbr": "^2.0.0",
